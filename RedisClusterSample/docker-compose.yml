@@ -1,0 +1,58 @@
+version: "3.3"
+services:
+  redis-master:
+    image: redis:6.0.7
+    container_name: redis-master
+    restart: always
+    volumes:
+      - redis_master:/data
+    ports:
+      - 6379:6379
+    networks:
+      - redis-net
+
+  redis-slave1:
+    image: redis:6.0.7
+    container_name: redis-slave1
+    restart: always
+    volumes:
+      - redis_slave1:/data
+    ports:
+      - 6479:6379
+    command: redis-server --slaveof redis-master 6379
+    networks:
+      - redis-net
+
+  redis-slave2:
+    image: redis:6.0.7
+    container_name: redis-slave2
+    restart: always
+    volumes:
+      - redis_slave2:/data
+    ports:
+      - 6579:6379
+    command: redis-server --slaveof redis-master 6379
+    networks:
+      - redis-net
+
+  redis-slave3:
+    image: redis:6.0.7
+    container_name: redis-slave3
+    restart: always
+    volumes:
+      - redis_slave3:/data
+    ports:
+      - 6679:6379
+    command: redis-server --slaveof redis-master 6379
+    networks:
+      - redis-net
+
+volumes:
+  redis_master:
+  redis_slave1:
+  redis_slave2:
+  redis_slave3:
+
+networks:
+  redis-net:
+    driver: bridge
