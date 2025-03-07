@@ -1,71 +1,65 @@
 # Docker Compose Configuration for Redis Master-Slave Setup
 version: "3.3"
-
-# Summary:
-# This configuration sets up a Redis master-slave architecture with one master and three slave nodes.
-# Redis master handles data writes and serves as the source of truth,
-# while slaves handle read operations and act as replicas for high availability and redundancy.
-
 services:
   # Redis Master Service
   redis-master:
-    image: redis:6.0.7  # Redis image version 6.0.7
-    container_name: redis-master  # Container name for easy identification
-    restart: always  # Ensure the container restarts on failure or system reboot
+    image: redis:6.0.7  
+    container_name: redis-master  
+    restart: always
     volumes:
-      - redis_master:/data  # Mount the volume to persist Redis data
+      - redis_master:/data  
     ports:
-      - 6379:6379  # Expose port 6379 on the host machine for Redis access
+      - 6379:6379 
     networks:
-      - redis-net  # Attach the container to the redis-net network
+      - redis-net  
 
   # Redis Slave 1 Service
-  redis-slave1:
-    image: redis:6.0.7  # Redis image version 6.0.7
-    container_name: redis-slave1  # Container for organization
-    restart: always  # Ensure the container restarts on failure or system reboot
+  redis-organization:
+    image: redis:6.0.7  
+    container_name: redis-organization 
+    restart: always 
     volumes:
-      - redis_slave1:/data  # Mount the volume to persist Redis data
+      - redis_organization:/data 
     ports:
-      - 6479:6379  # Expose port 6479 on the host machine for Redis slave access
-    command: redis-server --slaveof redis-master 6379  # Make this container a slave of redis-master
+      - 6479:6379
+    command: redis-server --slaveof redis-master 6379
     networks:
-      - redis-net  # Attach the container to the redis-net network
+      - redis-net 
 
   # Redis Slave 2 Service
-  redis-slave2:
-    image: redis:6.0.7  # Redis image version 6.0.7
-    container_name: redis-slave2  # Container for passwords
-    restart: always  # Ensure the container restarts on failure or system reboot
+  redis-passwords:
+    image: redis:6.0.7 
+    container_name: redis-passwords
+    restart: always  
     volumes:
-      - redis_slave2:/data  # Mount the volume to persist Redis data
+      - redis_passwords:/data  
     ports:
-      - 6579:6379  # Expose port 6579 on the host machine for Redis slave access
-    command: redis-server --slaveof redis-master 6379  # Make this container a slave of redis-master
+      - 6579:6379  
+    command: redis-server --slaveof redis-master 6379 
     networks:
-      - redis-net  # Attach the container to the redis-net network
+      - redis-net
 
   # Redis Slave 3 Service
-  redis-slave3:
-    image: redis:6.0.7  # Redis image version 6.0.7
-    container_name: redis-slave3  # Container for products
-    restart: always  # Ensure the container restarts on failure or system reboot
+  redis-products:
+    image: redis:6.0.7  
+    container_name: redis-products  
+    restart: always
     volumes:
-      - redis_slave3:/data  # Mount the volume to persist Redis data
+      - redis_products:/data 
     ports:
-      - 6679:6379  # Expose port 6679 on the host machine for Redis slave access
-    command: redis-server --slaveof redis-master 6379  # Make this container a slave of redis-master
+      - 6679:6379 
+    command: redis-server --slaveof redis-master 6379  
     networks:
-      - redis-net  # Attach the container to the redis-net network
+      - redis-net  
 
 # Docker Volumes
 volumes:
-  redis_master:  # Volume for storing Redis master data
-  redis_slave1:  # Volume for storing Redis slave 1 data
-  redis_slave2:  # Volume for storing Redis slave 2 data
-  redis_slave3:  # Volume for storing Redis slave 3 data
+  redis_master:  
+  redis_organization:   
+  redis_passwords:  
+  redis_products: 
 
 # Docker Network Configuration
 networks:
   redis-net:
-    driver: bridge  # Use the bridge network driver for communication between containers
+    driver: bridge 

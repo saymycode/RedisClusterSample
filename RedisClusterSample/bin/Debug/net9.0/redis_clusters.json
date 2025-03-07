@@ -1,0 +1,17 @@
+{
+    "clusters": {
+      "organization": [
+        "localhost:6379",  
+        "localhost:6479"  
+      ],
+      "passwords": [
+        "localhost:6379",
+        "localhost:6579" 
+      ],
+      "products": [
+        "localhost:6379",
+        "localhost:6679"  
+      ]
+    }
+  }
+  

@@ -17,3 +17,5 @@ D:\Bitbucket\RedisClusterSample\RedisClusterSample\obj\Debug\net9.0\refint\Redis
 D:\Bitbucket\RedisClusterSample\RedisClusterSample\obj\Debug\net9.0\RedisClusterSample.pdb
 D:\Bitbucket\RedisClusterSample\RedisClusterSample\obj\Debug\net9.0\RedisClusterSample.genruntimeconfig.cache
 D:\Bitbucket\RedisClusterSample\RedisClusterSample\obj\Debug\net9.0\ref\RedisClusterSample.dll
+D:\Bitbucket\RedisClusterSample\RedisClusterSample\obj\Debug\net9.0\RedisClusterSample.sourcelink.json
+D:\Bitbucket\RedisClusterSample\RedisClusterSample\bin\Debug\net9.0\redis_clusters.json

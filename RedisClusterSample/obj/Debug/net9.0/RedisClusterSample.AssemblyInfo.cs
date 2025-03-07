@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RedisClusterSample")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aa49acc2646d557f08c952eadcdba534c963dd12")]
 [assembly: System.Reflection.AssemblyProductAttribute("RedisClusterSample")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RedisClusterSample")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
